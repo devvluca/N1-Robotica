@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "author": "Sistema Girassol",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0.6, "left": -0.6, "attrs": {} },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": -102.4,
+      "left": -200.8,
+      "attrs": { "lux": "50" }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr2",
+      "top": -102.4,
+      "left": 202.4,
+      "attrs": { "lux": "50" }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot1",
+      "top": 209.9,
+      "left": -0.2,
+      "attrs": { "value": "512" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -224.4,
+      "left": 109.4,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -224.4,
+      "left": 32.6,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -200,
+      "left": 250,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": -140.6,
+      "left": 171.95,
+      "rotate": 270,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": -50,
+      "left": -200,
+      "attrs": { "value": "10000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r4",
+      "top": -50,
+      "left": 200,
+      "attrs": { "value": "10000" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "fc_esq",
+      "top": 54.2,
+      "left": -201.6,
+      "attrs": { "color": "blue" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "fc_dir",
+      "top": 102.2,
+      "left": -201.6,
+      "attrs": { "color": "blue" }
+    }
+  ],
+  "connections": [
+    [ "ldr1:VCC", "uno:5V", "red", [ "v20", "h200" ] ],
+    [ "ldr1:AO", "uno:A0", "blue", [ "v50", "h200" ] ],
+    [ "ldr1:GND", "r3:1", "black", [ "v50" ] ],
+    [ "r3:2", "uno:GND.1", "black", [ "v50", "h200" ] ],
+    [ "ldr2:VCC", "uno:5V", "red", [ "v20", "h-200" ] ],
+    [ "ldr2:AO", "uno:A1", "blue", [ "v50", "h-200" ] ],
+    [ "ldr2:GND", "r4:1", "black", [ "v50" ] ],
+    [ "r4:2", "uno:GND.1", "black", [ "v50", "h-200" ] ],
+    [ "pot1:VCC", "uno:5V", "red", [ "v-50" ] ],
+    [ "pot1:SIG", "uno:A2", "blue", [ "v-50" ] ],
+    [ "pot1:GND", "uno:GND.2", "black", [ "v-50" ] ],
+    [ "uno:7", "r1:1", "green", [ "v-50", "h250" ] ],
+    [ "r1:2", "led1:A", "green", [ "v0" ] ],
+    [ "led1:C", "uno:GND.1", "black", [ "v50", "h-300" ] ],
+    [ "uno:8", "r2:1", "red", [ "v-40", "h250" ] ],
+    [ "r2:2", "led2:A", "red", [ "v0" ] ],
+    [ "led2:C", "uno:GND.1", "black", [ "v50", "h-300" ] ],
+    [ "fc_esq:1.l", "uno:2", "blue", [ "v0" ] ],
+    [ "fc_esq:2.l", "uno:GND.1", "black", [ "v0" ] ],
+    [ "fc_dir:1.l", "uno:3", "blue", [ "v0" ] ],
+    [ "fc_dir:2.l", "uno:GND.1", "black", [ "v0" ] ]
+  ],
+  "serialMonitor": { "display": "terminal", "newline": "lf" },
+  "dependencies": {}
+}
